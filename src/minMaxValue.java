@@ -18,7 +18,7 @@ public class minMaxValue {
 
                 for (int i = 1; i <= choiceValue; i++ ){
 
-                    System.out.print(i + ". değerinizi giriniz : ");
+                    System.out.println(i + ". değerinizi giriniz:");
                     enterValue = scn.nextInt();
 
                     if (enterValue < min){
