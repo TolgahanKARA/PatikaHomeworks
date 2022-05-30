@@ -11,6 +11,10 @@ public class Main {
         arr = HelperArray.filled(arr, 1, 8 ,3 );
         System.out.println(Arrays.toString(arr));
 
+        int[] arrO = {3, 5, 79, 12, 25, -3, 66, 2, -49, 152};
+
+        System.out.println(HelperArray.find(arrO));
+
 
     }
 
