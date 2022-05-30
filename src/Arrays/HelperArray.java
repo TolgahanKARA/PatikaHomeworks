@@ -69,4 +69,31 @@ public class HelperArray {
 
     }
 
+    public static int [] copyRange(int arr [], int startIndex, int endIndex){
+
+        int [] copy = new int[(endIndex-startIndex)+1];
+        int temp = startIndex;
+
+        for (int i = 0; i < arr.length; i++){
+
+            if (temp == i){
+
+                copy[i-startIndex]= arr[i];
+                temp++;
+                if (endIndex == temp){
+
+                    copy[(i-startIndex)+1] = arr[i+1];
+                    break;
+                }
+
+            }
+
+
+
+        }
+
+        return copy;
+
+    }
+
 }

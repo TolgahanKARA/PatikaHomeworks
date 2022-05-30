@@ -18,7 +18,10 @@ public class Main {
         System.out.println(Arrays.toString(arrO));
         System.out.println("-----------");
 
-        System.out.println(Arrays.toString(HelperArray.copy(arrO,4)));
+        System.out.println(Arrays.toString(HelperArray.copy(arrO,5)));
+
+        System.out.println("------------");
+        System.out.println(Arrays.toString(HelperArray.copyRange(arrO,2,7)));
 
 
     }
