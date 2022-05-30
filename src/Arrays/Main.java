@@ -40,18 +40,20 @@ public class Main {
 //
 //        arrayHarmonicAvarage.harmonicAvarage(arr);
 
-        //Dizideki max ve min değeri bulma
+//        //Dizideki max ve min değeri bulma
+//
+//        int[] list = {56, 34, 1, 8, 101, -2, -33};
+//
+//        arrayMinMaxValue.minMaxValue(list);
+//
+//        System.out.println("-----------");
+//
+//        Scanner scn = new Scanner(System.in);
+//        int enterValue = scn.nextInt();
+//
+//        arrayMinMaxValue.nearestMinMaxValue(list, enterValue);
 
-        int[] list = {56, 34, 1, 8, 101, -2, -33};
-
-        arrayMinMaxValue.minMaxValue(list);
-
-        System.out.println("-----------");
-
-        Scanner scn = new Scanner(System.in);
-        int enterValue = scn.nextInt();
-
-        arrayMinMaxValue.nearestMinMaxValue(list, enterValue);
+        letterWithStar.letterBWithStar();
 
     }
 
