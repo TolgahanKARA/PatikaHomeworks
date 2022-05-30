@@ -96,4 +96,32 @@ public class HelperArray {
 
     }
 
+    public static boolean equals(int [] arrO, int [] arrT){
+
+        if (arrO.length != arrT.length){
+
+            return false;
+
+        }else{
+
+            for (int i = 0; i < arrO.length; i++){
+
+                if (arrO[i] == arrT[i]){
+
+                    continue;
+
+                }else {
+
+                    return false;
+
+                }
+
+            }
+
+            return true;
+
+        }
+
+    }
+
 }

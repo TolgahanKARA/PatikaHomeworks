@@ -23,6 +23,13 @@ public class Main {
         System.out.println("------------");
         System.out.println(Arrays.toString(HelperArray.copyRange(arrO,2,7)));
 
+        System.out.println("------------");
+        System.out.println("------------");
+
+        int[] list1 = {1, 2, 3, 4};
+        int[] list2 = {1, 2, 3, 4};
+
+        System.out.println(HelperArray.equals(list1,list2));
 
     }
 
