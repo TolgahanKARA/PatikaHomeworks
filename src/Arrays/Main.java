@@ -31,6 +31,11 @@ public class Main {
 
         System.out.println(HelperArray.equals(list1,list2));
 
+        int [] numbers = {1, 2, 3, 4, 5, 6};
+
+        System.out.println(HelperArray.average(numbers));
+
+
     }
 
 }

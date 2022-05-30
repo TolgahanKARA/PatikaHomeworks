@@ -124,4 +124,20 @@ public class HelperArray {
 
     }
 
+    public static double average(int[] numbers) {
+
+        double avg;
+        int sum = 0;
+
+        for (int i = 0; i < numbers.length; i++){
+
+            sum += numbers[i];
+
+        }
+
+        avg = sum / (double)numbers.length;
+
+
+        return avg;
+    }
 }
