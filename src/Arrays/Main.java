@@ -53,7 +53,13 @@ public class Main {
 //
 //        arrayMinMaxValue.nearestMinMaxValue(list, enterValue);
 
-        letterWithStar.letterBWithStar();
+
+//        //x işareti ile oluşturulan b harfi
+//        letterWithStar.letterBWithStar();
+
+        int [] list = {3, 7, 3, 3, 2, 9, 10, 21, 1, 33, 9, 1};
+
+    dublicateNumber.dublicate(list);
 
     }
 
