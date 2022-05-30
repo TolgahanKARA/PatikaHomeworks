@@ -14,6 +14,11 @@ public class Main {
         int[] arrO = {3, 5, 79, 12, 25, -3, 66, 2, -49, 152};
 
         System.out.println(HelperArray.find(arrO));
+        System.out.println("-----------");
+        System.out.println(Arrays.toString(arrO));
+        System.out.println("-----------");
+
+        System.out.println(Arrays.toString(HelperArray.copy(arrO,4)));
 
 
     }

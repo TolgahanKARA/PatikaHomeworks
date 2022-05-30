@@ -55,4 +55,18 @@ public class HelperArray {
 
     }
 
+    public static int [] copy(int arr [], int copyLength){
+
+        int [] copy = new int[copyLength];
+
+        for (int i = 0; i < copyLength; i++){
+
+            copy[i] = arr[i];
+
+        }
+
+        return copy;
+
+    }
+
 }
