@@ -1,6 +1,7 @@
 package Arrays;
 
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class Main {
 
@@ -34,11 +35,23 @@ public class Main {
 //        int [] numbers = {1, 2, 3, 4, 5, 6};
 //
 //        System.out.println(HelperArray.average(numbers));
+////Harmonik seri dizi
+//        int [] arr = {5, 8, 11};
+//
+//        arrayHarmonicAvarage.harmonicAvarage(arr);
 
-        int [] arr = {5, 8, 11};
+        //Dizideki max ve min değeri bulma
 
-        arrayHarmonicAvarage.harmonicAvarage(arr);
+        int[] list = {56, 34, 1, 8, 101, -2, -33};
 
+        arrayMinMaxValue.minMaxValue(list);
+
+        System.out.println("-----------");
+
+        Scanner scn = new Scanner(System.in);
+        int enterValue = scn.nextInt();
+
+        arrayMinMaxValue.nearestMinMaxValue(list, enterValue);
 
     }
 
