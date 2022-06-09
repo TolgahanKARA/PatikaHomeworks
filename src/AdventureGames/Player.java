@@ -11,10 +11,12 @@ public class Player {
     private String typeOfCharacter;
     private int select;
     private Scanner scanner;
+    private Inventory inventory;
 
     public Player(String playerName) {
 
         this.playerName = playerName;
+        this.inventory = new Inventory();
 
     }
 
@@ -57,11 +59,20 @@ public class Player {
 
         }
 
-        System.out.println("Karakterinizin ismi : " + this.playerName
-                + " Karakterinizin tipi : " + this.typeOfCharacter
-                + " Hasar : " + this.damage
-                + " Sağlık : " + this.health
-                + " Para :" + this.money
+        System.out.println("Karakterinizin ismi : " + this.getPlayerName()
+                + ", Karakterinizin tipi : " + this.getTypeOfCharacter()
+                + ", Hasar : " + this.getDamage()
+                + ", Sağlık : " + this.getHealth()
+                + ", Para :" + this.getMoney()
+        );
+
+    }
+    public void playerInfo(){
+
+        System.out.println("Silahınız : " + this.getInventory().getWeapon().getWeaponName()
+                + ", Hasar : " + this.getDamage()
+                + ", Sağlık : " + this.getHealth()
+                + ", Para :" + this.getMoney()
         );
 
     }
@@ -75,7 +86,7 @@ public class Player {
 
     public int getDamage() {
 
-        return this.damage;
+        return this.damage + this.getInventory().getWeapon().getDamage();
 
     }
 
@@ -143,6 +154,18 @@ public class Player {
     public void setSelect(int select) {
 
         this.select = select;
+
+    }
+
+    public Inventory getInventory(){
+
+        return this.inventory;
+
+    }
+
+    public void setInventory(Inventory inventory){
+
+        this.inventory = inventory;
 
     }
 
