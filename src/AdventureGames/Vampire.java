@@ -1,10 +1,10 @@
 package AdventureGames;
 
-public class Vampire extends Obstacle {
+public class Vampire extends Obstacle{
 
-    public Vampire() {
+    public Vampire(){
 
-        super(2, "Vampir", 4, 14);
+        super(2 , "Vampir", 4,14);
 
     }
 

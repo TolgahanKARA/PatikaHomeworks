@@ -1,11 +1,14 @@
 package AdventureGames;
 
+import java.util.Random;
+
 public abstract class Obstacle {
 
     private int id;
     private String obstacleName;
     private int obstacleDamage;
     private int obstacleHealth;
+    private int maxObstacle;
 
     public Obstacle(int id, String obstacleName, int obstacleDamage, int obstacleHealth) {
 
@@ -13,6 +16,14 @@ public abstract class Obstacle {
         this.obstacleName = obstacleName;
         this.obstacleDamage = obstacleDamage;
         this.obstacleHealth = obstacleHealth;
+
+    }
+
+    public int randomObstacleNumber() {
+
+        Random random = new Random();
+        maxObstacle = random.nextInt(3) + 1;
+        return maxObstacle;
 
     }
 
