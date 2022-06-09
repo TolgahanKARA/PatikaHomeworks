@@ -24,7 +24,7 @@ public abstract class GameCharacter {
 
     }
 
-    public void setId(){
+    public void setId(int id){
 
         this.id = id;
 
