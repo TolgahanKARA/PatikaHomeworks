@@ -3,6 +3,8 @@ package AdventureGames;
 public class Toolstore extends NormalLocations {
 
     private int selectActions;
+    private int selectActionsWeapon;
+    private int selectActionsArmor;
     private String selectExit;
     private boolean exit = true;
     private int balance;
@@ -21,8 +23,8 @@ public class Toolstore extends NormalLocations {
         System.out.println();
         System.out.println("Yapmak istediğiniz şleminizi giriniz");
         System.out.println();
-        System.out.println("-------- 1-Menü --------");
-        System.out.println("-------- 2-Çıkış --------");
+        System.out.println("--------\t1-Menü\t--------");
+        System.out.println("--------\t2-Çıkış\t--------");
         selectActions = Locations.scanner.nextInt();
         while (selectActions < 1 || selectActions > 2) {
 
@@ -90,7 +92,7 @@ public class Toolstore extends NormalLocations {
         System.out.println();
         for (Weapon weapon : Weapon.weapons()) {
 
-            System.out.println(weapon.getId()
+            System.out.println(weapon.getId() + " - "
                     + "\tİsmi\t:\t" + weapon.getWeaponName()
                     + "\tHasarı\t:\t" + weapon.getDamage()
                     + "\tFiyatı\t:\t" + weapon.getPrice());
@@ -99,24 +101,24 @@ public class Toolstore extends NormalLocations {
 
         System.out.println("4\tÇıkış");
 
-        selectActions = Locations.scanner.nextInt();
-        while (selectActions < 1 || selectActions > Weapon.weapons().length + 1) {
+        selectActionsWeapon = Locations.scanner.nextInt();
+        while (selectActionsWeapon < 1 || selectActionsWeapon > Weapon.weapons().length + 1) {
 
             System.out.println("Hatalı bir değer girdiniz ");
-            selectActions = Locations.scanner.nextInt();
+            selectActionsWeapon = Locations.scanner.nextInt();
 
         }
 
-        switch (selectActions) {
+        switch (selectActionsWeapon) {
 
             case 1:
-                buy(selectActions);
+                buy(selectActionsWeapon);
                 break;
             case 2:
-                buy(selectActions);
+                buy(selectActionsWeapon);
                 break;
             case 3:
-                buy(selectActions);
+                buy(selectActionsWeapon);
                 break;
             case 4:
                 exit();
@@ -129,6 +131,45 @@ public class Toolstore extends NormalLocations {
     private void selectArmors() {
 
         System.out.println("---------\tZırhlar \t---------");
+        System.out.println();
+        for (Armor armors: Armor.armors()){
+
+            System.out.println(armors.getId() + " - "
+                    + "\tİsmi\t:\t" + armors.getArmorName()
+                    + "\tBlock\t:\t" + armors.getBlock()
+                    + "\tFiyatı\t:\t" + armors.getPrice());
+
+        }
+
+        System.out.println("4 - \tÇıkış");
+
+        selectActionsArmor = Locations.scanner.nextInt();
+        while (selectActionsArmor < 1 || selectActionsArmor > Armor.armors().length +1){
+
+            System.out.println("Hatalı bir değer girdiniz !");
+            selectActionsArmor = Locations.scanner.nextInt();
+
+        }
+
+        switch (selectActionsArmor){
+
+            case 1:
+                buy(selectActionsArmor);
+                break;
+            case 2:
+                buy(selectActionsArmor);
+                break;
+            case 3:
+                buy(selectActionsArmor);
+                break;
+            case 4:
+                buy(selectActionsArmor);
+                break;
+            default:
+                exit();
+                break;
+
+        }
 
     }
 
@@ -165,20 +206,44 @@ public class Toolstore extends NormalLocations {
 
     public void buy(int selectActions) {
 
-        Weapon selectedWeapon = Weapon.getWeaponObjByID(selectActions);
+        Weapon selectedWeapon = Weapon.getWeaponObjByID(selectActionsWeapon);
+
+        Armor selectedArmor = Armor.getArmorObjByID(selectActionsArmor);
+
 
         if (selectedWeapon != null){
 
-            if (selectedWeapon.getPrice() < this.getPlayer().getMoney()){
+            if (selectedWeapon.getPrice() <= this.getPlayer().getMoney()){
 
                 System.out.println(selectedWeapon.getWeaponName() + " silahını satın aldınız");
                 balance = this.getPlayer().getMoney()-selectedWeapon.getPrice();
                 this.getPlayer().setMoney(balance);
+                System.out.println("Tebrikler silah satın aldınız");
                 System.out.println("Kalan paranız :\t" + this.getPlayer().getMoney());
                 System.out.println("Önceki silahınız :\t" + this.getPlayer().getInventory().getWeapon().getWeaponName());
 
                 this.getPlayer().getInventory().setWeapon(selectedWeapon);
                 System.out.println("Şimdiki silahınız :\t" + this.getPlayer().getInventory().getWeapon().getWeaponName());
+            }else{
+
+                System.out.println("Yeterli paranız bulunmamaktadır");
+
+            }
+
+        }
+        if (selectedArmor != null){
+
+            if (selectedArmor.getPrice() <= this.getPlayer().getMoney()){
+
+                System.out.println(selectedArmor.getArmorName() + " zırhını aldınız");
+                balance = this.getPlayer().getMoney() - selectedArmor.getPrice();
+                this.getPlayer().setMoney(balance);
+                System.out.println("Tebrikler zırh satın aldınız");
+                System.out.println("Kalan paranız :\t" + this.getPlayer().getMoney());
+                System.out.println("Önceki zırhınız :\t" + this.getPlayer().getInventory().getArmor().getArmorName());
+                this.getPlayer().getInventory().setArmor(selectedArmor);
+                System.out.println("Şimdiki zırhınız :\t" + this.getPlayer().getInventory().getArmor().getArmorName());
+
             }else{
 
                 System.out.println("Yeterli paranız bulunmamaktadır");

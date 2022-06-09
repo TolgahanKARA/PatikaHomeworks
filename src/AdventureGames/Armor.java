@@ -16,7 +16,7 @@ public class Armor {
 
     }
 
-    public Armor[] armors() {
+    public static Armor[] armors() {
 
         Armor[] armorList = new Armor[3];
 
@@ -25,6 +25,22 @@ public class Armor {
         armorList[2] = new Armor("Güçlü", 3, 5, 40);
 
         return armorList;
+
+    }
+
+    public static Armor getArmorObjByID(int selectActionsArmor) {
+
+        for (Armor amors : Armor.armors()){
+
+            if (amors.id == selectActionsArmor){
+
+                return amors;
+
+            }
+
+        }
+
+        return null;
 
     }
 
