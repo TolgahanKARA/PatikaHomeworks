@@ -9,13 +9,18 @@ public abstract class Obstacle {
     private int obstacleDamage;
     private int obstacleHealth;
     private int maxObstacle;
+    private int obstacleAward;
+    private int originalObstacleHealth;
 
-    public Obstacle(int id, String obstacleName, int obstacleDamage, int obstacleHealth) {
+
+    public Obstacle(int id, String obstacleName, int obstacleDamage, int obstacleHealth, int obstacleAward) {
 
         this.id = id;
         this.obstacleName = obstacleName;
         this.obstacleDamage = obstacleDamage;
         this.obstacleHealth = obstacleHealth;
+        this.obstacleAward = obstacleAward;
+        this.originalObstacleHealth = obstacleHealth;
 
     }
 
@@ -71,7 +76,37 @@ public abstract class Obstacle {
 
     public void setObstacleHealth(int obstacleHealth) {
 
+        if (obstacleHealth < 0){
+
+            obstacleHealth = 0;
+
+        }
+
         this.obstacleHealth = obstacleHealth;
+
+    }
+
+    public int getObstacleAward(){
+
+        return this.obstacleAward;
+
+    }
+
+    public void setObstacleAward(int obstacleAward){
+
+        this.obstacleAward = obstacleAward;
+
+    }
+
+    public int getObstacleOriginalHealth(){
+
+        return this.originalObstacleHealth;
+
+    }
+
+    public void setObstacleOriginalHealth(int originalObstacleHealth){
+
+        this.originalObstacleHealth = originalObstacleHealth;
 
     }
 

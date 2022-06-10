@@ -71,7 +71,7 @@ public class Player {
 
         System.out.println("Silahınız : " + this.getInventory().getWeapon().getWeaponName()
                 + ", Zırhınız : " + this.getInventory().getArmor().getArmorName()
-                + ", Hasar : " + this.getDamage()
+                + ", Hasar : " + this.getTotalDamage()
                 + ", Block : " + this.getInventory().getArmor().getBlock()
                 + ", Sağlık : " + this.getHealth()
                 + ", Para :" + this.getMoney()
@@ -86,9 +86,15 @@ public class Player {
         this.setTypeOfCharacter(gameCharacter.getTypeOfCharacter());
     }
 
-    public int getDamage() {
+    public int getTotalDamage(){
 
         return this.damage + this.getInventory().getWeapon().getDamage();
+
+    }
+
+    public int getDamage() {
+
+        return this.damage;
 
     }
 
