@@ -13,28 +13,40 @@ public class River extends BattleLocations {
 
         int obstacleNumber = this.randomObstacleNumber();
 
-        System.out.println(this.getName()
-                + " bölgesine geldiniz karşınızda " + obstacleNumber
-                + " tane " + this.getObstacle().getObstacleName() + " var");
+        if (this.getPlayer().getInventory().getWater() == true) {
 
-        System.out.print("Savaş yada Kaç S/K : ");
-        String selectBattleCase = Locations.scanner.nextLine().toUpperCase();
+            System.out.println(this.getName()
+                    + " bölgesine geldiniz karşınızda " + obstacleNumber
+                    + " tane " + this.getObstacle().getObstacleName() + " var");
 
-        if (selectBattleCase.equals("S") && combat(obstacleNumber)) {
+            System.out.print("Savaş yada Kaç S/K : ");
+            String selectBattleCase = Locations.scanner.nextLine().toUpperCase();
 
-            System.out.println(this.getName() + " tüm düşmanları yendiniz !");
-            return true;
+            if (selectBattleCase.equals("S") && combat(obstacleNumber)) {
 
-        }
+                System.out.println(this.getName() + " tüm düşmanları yendiniz !");
 
-        System.out.println("######################");
-        System.out.println("Bu bölgedeki düşmanlar çok güçlü güçlenip yeniden gel");
-        System.out.println("######################");
+                this.getPlayer().getInventory().setWater(false);
 
-        if (this.getPlayer().getHealth() <= 0) {
+                return true;
 
-            System.out.println("GAME OVER");
-            return false;
+            }
+
+            System.out.println("######################");
+            System.out.println("Bu bölgedeki düşmanlar çok güçlü güçlenip yeniden gel");
+            System.out.println("######################");
+
+            if (this.getPlayer().getHealth() <= 0) {
+
+                System.out.println("GAME OVER");
+                return false;
+
+            }
+        }else{
+
+            System.out.println("-----------------------");
+            System.out.println(this.getName() + " Bölgesindeki ödülü(Water) aldığınız için buraya giremezsiniz");
+            System.out.println("-----------------------");
 
         }
 
@@ -58,6 +70,7 @@ public class River extends BattleLocations {
 
                 if (choseCombat.equals("V")) {
 
+                    System.out.println("-----------------------");
                     System.out.println("Siz vurdunuz");
                     this.getObstacle().setObstacleHealth(this.getObstacle().getObstacleHealth() - this.getPlayer().getDamage());
                     afterHit();

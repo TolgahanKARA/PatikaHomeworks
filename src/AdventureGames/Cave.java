@@ -13,30 +13,45 @@ public class Cave extends BattleLocations {
 
         int obstacleNumber = this.randomObstacleNumber();
 
-        System.out.println(this.getName()
-                + " bölgesine geldiniz karşınızda " + obstacleNumber
-                + " tane " + this.getObstacle().getObstacleName() + " var");
+        if (this.getPlayer().getInventory().getFood() == true){
 
-        System.out.print("Savaş yada Kaç S/K : ");
-        String selectBattleCase = Locations.scanner.nextLine().toUpperCase();
+            System.out.println(this.getName()
+                    + " bölgesine geldiniz karşınızda " + obstacleNumber
+                    + " tane " + this.getObstacle().getObstacleName() + " var");
 
-        if (selectBattleCase.equals("S") && combat(obstacleNumber)) {
+            System.out.print("Savaş yada Kaç S/K : ");
+            String selectBattleCase = Locations.scanner.nextLine().toUpperCase();
 
-            System.out.println(this.getName() + " tüm düşmanları yendiniz !");
-            return true;
+            if (selectBattleCase.equals("S")) {
+
+                if (combat(obstacleNumber)) {
+
+                    System.out.println(this.getName() + " tüm düşmanları yendiniz !");
+
+                    this.getPlayer().getInventory().setFood(false);
+
+                    return true;
+
+                }
+
+            }
+
+            if (this.getPlayer().getHealth() < 0) {
+
+                System.out.println("GAME OVER");
+                return false;
+
+            }
+
+        }else {
+
+            System.out.println("-----------------------");
+            System.out.println(this.getName() + " Bölgesindeki ödülü(Food) aldığınız için buraya giremezsiniz");
+            System.out.println("-----------------------");
 
         }
 
-        System.out.println("######################");
-        System.out.println("Bu bölgedeki düşmanlar çok güçlü güçlenip yeniden gel");
-        System.out.println("######################");
 
-        if (this.getPlayer().getHealth() <= 0) {
-
-            System.out.println("GAME OVER");
-            return false;
-
-        }
 
         return true;
 
@@ -58,6 +73,7 @@ public class Cave extends BattleLocations {
 
                 if (choseCombat.equals("V")) {
 
+                    System.out.println("-----------------------");
                     System.out.println("Siz vurdunuz");
                     this.getObstacle().setObstacleHealth(this.getObstacle().getObstacleHealth() - this.getPlayer().getDamage());
                     afterHit();
@@ -76,21 +92,12 @@ public class Cave extends BattleLocations {
 
             }
 
-            if (this.getObstacle().getObstacleHealth() < this.getPlayer().getHealth()) {
-
-                System.out.println("----------------");
+            if (this.getObstacle().getObstacleHealth() < this.getPlayer().getHealth()){
 
                 System.out.println(i + ". Düşmanı yendiniz");
-                System.out.println("################");
-
                 System.out.println(this.getObstacle().getObstacleAward() + " para kazandınız.");
-                System.out.println("################");
-
                 this.getPlayer().setMoney(this.getPlayer().getMoney() + this.getObstacle().getObstacleAward());
-                System.out.println("################");
-
                 System.out.println("Güncel paranız : " + this.getPlayer().getMoney());
-                System.out.println("################");
 
             }
 

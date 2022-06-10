@@ -13,29 +13,42 @@ public class Forest extends BattleLocations {
 
         int obstacleNumber = this.randomObstacleNumber();
 
-        System.out.println(this.getName()
-                + " bölgesine geldiniz karşınızda " + obstacleNumber
-                + " tane " + this.getObstacle().getObstacleName() + " var");
+        if (this.getPlayer().getInventory().getFirewood() == true) {
+
+            System.out.println(this.getName()
+                    + " bölgesine geldiniz karşınızda " + obstacleNumber
+                    + " tane " + this.getObstacle().getObstacleName() + " var");
 
 
-        System.out.print("Savaş yada Kaç S/K : ");
-        String selectBattleCase = Locations.scanner.nextLine().toUpperCase();
+            System.out.print("Savaş yada Kaç S/K : ");
+            String selectBattleCase = Locations.scanner.nextLine().toUpperCase();
 
-        if (selectBattleCase.equals("S") && combat(obstacleNumber)) {
+            if (selectBattleCase.equals("S") && combat(obstacleNumber)) {
 
-            System.out.println(this.getName() + " tüm düşmanları yendiniz !");
-            return true;
+                System.out.println(this.getName() + " tüm düşmanları yendiniz !");
 
-        }
+                this.getPlayer().getInventory().setFirewood(false);
 
-        System.out.println("######################");
-        System.out.println("Bu bölgedeki düşmanlar çok güçlü güçlenip yeniden gel");
-        System.out.println("######################");
+                return true;
 
-        if (this.getPlayer().getHealth() <= 0) {
+            }
 
-            System.out.println("GAME OVER");
-            return false;
+            System.out.println("######################");
+            System.out.println("Bu bölgedeki düşmanlar çok güçlü güçlenip yeniden gel");
+            System.out.println("######################");
+
+            if (this.getPlayer().getHealth() <= 0) {
+
+                System.out.println("GAME OVER");
+                return false;
+
+            }
+
+        }else{
+
+            System.out.println("-----------------------");
+            System.out.println(this.getName() + " Bölgesindeki ödülü(Firewood) aldığınız için buraya giremezsiniz");
+            System.out.println("-----------------------");
 
         }
 
@@ -56,9 +69,9 @@ public class Forest extends BattleLocations {
 
                 System.out.print("Vur yada Kaç V/K :");
                 String choseCombat = Locations.scanner.nextLine().toUpperCase();
-
                 if (choseCombat.equals("V")) {
 
+                    System.out.println("-----------------------");
                     System.out.println("Siz vurdunuz");
                     this.getObstacle().setObstacleHealth(this.getObstacle().getObstacleHealth() - this.getPlayer().getDamage());
                     afterHit();
