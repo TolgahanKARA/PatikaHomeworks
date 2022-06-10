@@ -6,6 +6,7 @@ public class Player {
 
     private int damage;
     private int health;
+    private int originalHealth;
     private int money;
     private String playerName;
     private String typeOfCharacter;
@@ -22,7 +23,9 @@ public class Player {
 
     public void selectCharacter() {
 
+        System.out.println("---------------------------------");
         System.out.println("Karakterler");
+        System.out.println("---------------------------------");
 
         GameCharacter[] gameCharacters = {new Samurai(), new Archer(), new Knight()};
 
@@ -82,6 +85,7 @@ public class Player {
     private void initPlayer(GameCharacter gameCharacter) {
         this.setDamage(gameCharacter.getDamage());
         this.setHealth(gameCharacter.getHealth());
+        this.setOriginalHealth(gameCharacter.getHealth());
         this.setMoney(gameCharacter.getMoney());
         this.setTypeOfCharacter(gameCharacter.getTypeOfCharacter());
     }
@@ -174,6 +178,18 @@ public class Player {
     public void setInventory(Inventory inventory){
 
         this.inventory = inventory;
+
+    }
+
+    public int getOriginalHealth(){
+
+        return this.originalHealth;
+
+    }
+
+    public void setOriginalHealth(int originalHealth){
+
+        this.originalHealth = originalHealth;
 
     }
 

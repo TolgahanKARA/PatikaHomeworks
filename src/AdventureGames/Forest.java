@@ -2,8 +2,6 @@ package AdventureGames;
 
 public class Forest extends BattleLocations {
 
-    private Combat combat;
-
     public Forest(Player player) {
 
         super(player, "Orman", new Vampire(), "FireWood", 3);

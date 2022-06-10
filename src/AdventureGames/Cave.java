@@ -2,8 +2,6 @@ package AdventureGames;
 
 public class Cave extends BattleLocations {
 
-    private Combat combat;
-
     public Cave(Player player) {
 
         super(player, "Mağara", new Zombie(), "Food", 3);

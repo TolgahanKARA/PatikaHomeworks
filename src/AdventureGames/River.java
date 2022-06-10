@@ -2,8 +2,6 @@ package AdventureGames;
 
 public class River extends BattleLocations {
 
-    Combat combat;
-
     public River(Player player) {
 
         super(player, "Nehir", new Bear(), "Water", 3);

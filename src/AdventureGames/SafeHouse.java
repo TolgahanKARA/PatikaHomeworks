@@ -13,6 +13,7 @@ public class SafeHouse extends NormalLocations{
 
         System.out.println();
         System.out.println("Şu an güvenli evdesiniz");
+        this.getPlayer().setHealth(this.getPlayer().getOriginalHealth());
         return true;
 
     }
