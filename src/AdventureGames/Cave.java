@@ -1,5 +1,7 @@
 package AdventureGames;
 
+import java.util.Random;
+
 public class Cave extends BattleLocations {
 
     public Cave(Player player) {
@@ -59,6 +61,11 @@ public class Cave extends BattleLocations {
 
     public boolean combat(int obsNumber) {
 
+        int startRandom;
+        Random random = new Random();
+        startRandom = random.nextInt(100);
+        boolean isStartCombat = true;
+
         for (int i = 1; i <= obsNumber; i++) {
 
             this.getObstacle().setObstacleHealth(this.getObstacle().getObstacleOriginalHealth());
@@ -73,20 +80,48 @@ public class Cave extends BattleLocations {
 
                 if (choseCombat.equals("V")) {
 
-                    System.out.println("-----------------------");
-                    System.out.println("Siz vurdunuz");
-                    this.getObstacle().setObstacleHealth(this.getObstacle().getObstacleHealth() - this.getPlayer().getDamage());
-                    afterHit();
+                    if (startRandom < 50){
 
-                    if (this.getObstacle().getObstacleHealth() > 0) {
-
-                        System.out.println("Canavar size vurdu");
-                        int obstacleDamege = this.getObstacle().getObstacleDamage() - this.getPlayer().getInventory().getArmor().getBlock();
-                        this.getPlayer().setHealth(this.getPlayer().getHealth() - obstacleDamege);
-
+                        System.out.println("-----------------------");
+                        System.out.println("Siz vurdunuz");
+                        this.getObstacle().setObstacleHealth(this.getObstacle().getObstacleHealth() - this.getPlayer().getDamage());
                         afterHit();
 
+                        if (this.getObstacle().getObstacleHealth() > 0) {
+
+                            System.out.println("Canavar size vurdu");
+                            int obstacleDamege = this.getObstacle().getObstacleDamage() - this.getPlayer().getInventory().getArmor().getBlock();
+                            this.getPlayer().setHealth(this.getPlayer().getHealth() - obstacleDamege);
+
+                            afterHit();
+
+                        }
+
+                    }else{
+
+                        if (this.getObstacle().getObstacleHealth() > 0) {
+
+                            System.out.println("Canavar size vurdu");
+                            int obstacleDamege = this.getObstacle().getObstacleDamage() - this.getPlayer().getInventory().getArmor().getBlock();
+                            this.getPlayer().setHealth(this.getPlayer().getHealth() - obstacleDamege);
+
+                            afterHit();
+
+                        }
+
+                        System.out.println("-----------------------");
+                        System.out.println("Siz vurdunuz");
+                        this.getObstacle().setObstacleHealth(this.getObstacle().getObstacleHealth() - this.getPlayer().getDamage());
+                        afterHit();
+
+
                     }
+
+
+
+                }else {
+
+                    return false;
 
                 }
 
@@ -98,6 +133,9 @@ public class Cave extends BattleLocations {
                 System.out.println(this.getObstacle().getObstacleAward() + " para kazandınız.");
                 this.getPlayer().setMoney(this.getPlayer().getMoney() + this.getObstacle().getObstacleAward());
                 System.out.println("Güncel paranız : " + this.getPlayer().getMoney());
+
+
+                startRandom = random.nextInt(100);
 
             }
 

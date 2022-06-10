@@ -1,5 +1,7 @@
 package AdventureGames;
 
+import java.util.Random;
+
 public class Forest extends BattleLocations {
 
     public Forest(Player player) {
@@ -44,7 +46,7 @@ public class Forest extends BattleLocations {
 
             }
 
-        }else{
+        } else {
 
             System.out.println("-----------------------");
             System.out.println(this.getName() + " Bölgesindeki ödülü(Firewood) aldığınız için buraya giremezsiniz");
@@ -57,6 +59,11 @@ public class Forest extends BattleLocations {
     }
 
     public boolean combat(int obsNumber) {
+
+        int startRandom;
+        Random random = new Random();
+        startRandom = random.nextInt(100);
+        boolean isStartCombat = true;
 
         for (int i = 1; i <= obsNumber; i++) {
 
@@ -71,20 +78,47 @@ public class Forest extends BattleLocations {
                 String choseCombat = Locations.scanner.nextLine().toUpperCase();
                 if (choseCombat.equals("V")) {
 
-                    System.out.println("-----------------------");
-                    System.out.println("Siz vurdunuz");
-                    this.getObstacle().setObstacleHealth(this.getObstacle().getObstacleHealth() - this.getPlayer().getDamage());
-                    afterHit();
+                    if (startRandom < 50) {
 
-                    if (this.getObstacle().getObstacleHealth() > 0) {
-
-                        System.out.println("Canavar size vurdu");
-                        int obstacleDamege = this.getObstacle().getObstacleDamage() - this.getPlayer().getInventory().getArmor().getBlock();
-                        this.getPlayer().setHealth(this.getPlayer().getHealth() - obstacleDamege);
-
+                        System.out.println("-----------------------");
+                        System.out.println("Siz vurdunuz");
+                        this.getObstacle().setObstacleHealth(this.getObstacle().getObstacleHealth() - this.getPlayer().getDamage());
                         afterHit();
 
+                        if (this.getObstacle().getObstacleHealth() > 0) {
+
+                            System.out.println("Canavar size vurdu");
+                            int obstacleDamege = this.getObstacle().getObstacleDamage() - this.getPlayer().getInventory().getArmor().getBlock();
+                            this.getPlayer().setHealth(this.getPlayer().getHealth() - obstacleDamege);
+
+                            afterHit();
+
+                        }
+
+                    } else {
+
+                        if (this.getObstacle().getObstacleHealth() > 0) {
+
+                            System.out.println("Canavar size vurdu");
+                            int obstacleDamege = this.getObstacle().getObstacleDamage() - this.getPlayer().getInventory().getArmor().getBlock();
+                            this.getPlayer().setHealth(this.getPlayer().getHealth() - obstacleDamege);
+
+                            afterHit();
+
+                        }
+
+                        System.out.println("-----------------------");
+                        System.out.println("Siz vurdunuz");
+                        this.getObstacle().setObstacleHealth(this.getObstacle().getObstacleHealth() - this.getPlayer().getDamage());
+                        afterHit();
+
+
                     }
+
+
+                } else {
+
+                    return false;
 
                 }
 

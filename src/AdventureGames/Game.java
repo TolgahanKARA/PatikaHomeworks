@@ -52,7 +52,7 @@ public class Game {
                 System.out.println();
                 System.out.println("##########################################");
                 System.out.println();
-                System.out.print("Gitmek istediğiniz Bölgeyi seçiniz");
+                System.out.print("Gitmek istediğiniz Bölgeyi seçiniz : ");
 
                 selectLocation = scanner.nextInt();
                 switch (selectLocation) {

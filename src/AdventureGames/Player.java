@@ -83,6 +83,7 @@ public class Player {
     private void initPlayer(GameCharacter gameCharacter) {
         this.setDamage(gameCharacter.getDamage());
         this.setHealth(gameCharacter.getHealth());
+        this.setOriginalHealth(gameCharacter.getHealth());
         this.setMoney(gameCharacter.getMoney());
         this.setTypeOfCharacter(gameCharacter.getTypeOfCharacter());
     }
