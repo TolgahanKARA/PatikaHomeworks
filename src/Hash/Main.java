@@ -2,11 +2,13 @@ package Hash;
 
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.LinkedHashSet;
 
 public class Main {
 
     public static void main(String[] args) {
 
+        /*
         HashSet<Integer> hashSet = new HashSet<>();
 
         hashSet.add(100);
@@ -33,6 +35,23 @@ public class Main {
         while (iterator.hasNext()){
 
             System.out.println(iterator.next());
+
+        }
+        */
+
+        //LinkedHash giren ve çıkan değerlerin sırasını tutuyor
+
+        LinkedHashSet<Integer> linkedHashSet = new LinkedHashSet<>();
+
+        linkedHashSet.add(15);
+        linkedHashSet.add(10);
+        linkedHashSet.add(20);
+        linkedHashSet.add(30);
+
+        Iterator<Integer> iterator1 = linkedHashSet.iterator();
+        while (iterator1.hasNext()){
+
+            System.out.println(iterator1.next());
 
         }
 
